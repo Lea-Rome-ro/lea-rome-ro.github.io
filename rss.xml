@@ -1,0 +1,850 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog by So yeon]]></title><description><![CDATA[초심을 기억하고 싶은 개발자]]></description><link>https://learomero.github.io/</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 19 Jul 2021 07:19:27 GMT</lastBuildDate><item><title><![CDATA[ESLint와 Prettier]]></title><description><![CDATA[ESLint와 Prettier 두가지를 비교하면서 두개의 개념에 대해 알아볼 수 있습니다. 또한, ESLint와 Prettier를 함께 사용하는 방법에 대해서도 간단히 설명해 보았습니다.]]></description><link>https://learomero.github.io//posts/ESLint-Prettier</link><guid isPermaLink="false">https://learomero.github.io//posts/ESLint-Prettier</guid><pubDate>Thu, 15 Jul 2021 22:35:32 GMT</pubDate><content:encoded>&lt;h2 id=&quot;1-eslint개념-및-설치&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-eslint%EA%B0%9C%EB%85%90-%EB%B0%8F-%EC%84%A4%EC%B9%98&quot; aria-label=&quot;1 eslint개념 및 설치 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. ESLint개념 및 설치&lt;/h2&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 702px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/1d19d74c0d89a5753c686b94bac18da0/eafa3/eslint.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 40%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAIABQDASIAAhEBAxEB/8QAFwABAAMAAAAAAAAAAAAAAAAAAAEDBf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAdqQsB//xAAYEAACAwAAAAAAAAAAAAAAAAACEBESIv/aAAgBAQABBQI7ztf/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAZEAABBQAAAAAAAAAAAAAAAAAAARASQYH/2gAIAQEABj8CSOlN/8QAGhAAAQUBAAAAAAAAAAAAAAAAEQABEDFBUf/aAAgBAQABPyHDg2Tdx//aAAwDAQACAAMAAAAQi8//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/ED//xAAVEQEBAAAAAAAAAAAAAAAAAAABEP/aAAgBAgEBPxBZ/8QAGxAAAgEFAAAAAAAAAAAAAAAAARExABBBUZH/2gAIAQEAAT8QAmB5FIMoY3Gbf//Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/1d19d74c0d89a5753c686b94bac18da0/8ac56/eslint.webp 240w,
+/static/1d19d74c0d89a5753c686b94bac18da0/d3be9/eslint.webp 480w,
+/static/1d19d74c0d89a5753c686b94bac18da0/de2ca/eslint.webp 702w&quot;
+              sizes=&quot;(max-width: 702px) 100vw, 702px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/1d19d74c0d89a5753c686b94bac18da0/09b79/eslint.jpg 240w,
+/static/1d19d74c0d89a5753c686b94bac18da0/7cc5e/eslint.jpg 480w,
+/static/1d19d74c0d89a5753c686b94bac18da0/eafa3/eslint.jpg 702w&quot;
+            sizes=&quot;(max-width: 702px) 100vw, 702px&quot;
+            type=&quot;image/jpeg&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/1d19d74c0d89a5753c686b94bac18da0/eafa3/eslint.jpg&quot;
+            alt=&quot;ESLint&quot;
+            title=&quot;ESLint&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&quot;--eslint란&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#--eslint%EB%9E%80&quot; aria-label=&quot;  eslint란 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;✔  ESLint란?&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;ESLint는   &lt;strong&gt;ES + Lint&lt;/strong&gt; 의 합성어로 &lt;strong&gt;코드의 포맷팅과 품질관리&lt;/strong&gt; 도구이다.   &lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ES는 EcmaScript(표준화된 스크립트 프로그래밍 언어)를 의미하고, Lint는 보푸라기라는 뜻으로 프로그래밍에서 에러가 있는 코드에 표시를 달아놓는것을 의미한다.  &lt;/p&gt;
+&lt;p&gt;ESLint는 JS의 스타일 가이드를 따르지 않거나 문제가 있는 안티패턴들을 찾아주고, 일관된 코드스타일을 가질 수 있도록 도와주는 역할을 한다.  &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;--eslint-설치-및-설정&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#--eslint-%EC%84%A4%EC%B9%98-%EB%B0%8F-%EC%84%A4%EC%A0%95&quot; aria-label=&quot;  eslint 설치 및 설정 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;✔  ESLint 설치 및 설정&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;vscode와 node.js를 다운받아 설치한다.&lt;/li&gt;
+&lt;li&gt;terminal에서 &lt;code class=&quot;language-text&quot;&gt;npm init&lt;/code&gt;과 &lt;code class=&quot;language-text&quot;&gt;npm install&lt;/code&gt;을 실행하여 설치한다.&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;yarn global add eslint&lt;/code&gt; 혹은 &lt;code class=&quot;language-text&quot;&gt;npm install -g eslint&lt;/code&gt; 명령어를 사용하여 설치한다.&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;eslint --init&lt;/code&gt; 명령어로 초기화 해준 다음 다양한 설정값을 필요한 환경에 맞게 선택해준다.
+ex)&lt;br&gt;
+&lt;em&gt;- ? How would you like to use ESLint?
+❯ To check syntax and find problems&lt;br&gt;
+? What type of modules does your project use?&lt;br&gt;
+❯ None of these&lt;br&gt;
+? Which framework does your project use?&lt;br&gt;
+❯ None of these&lt;br&gt;
+? Does your project use TypeScript?
+❯ No&lt;br&gt;
+? Where does your code run?&lt;br&gt;
+❯ browser&lt;br&gt;
+? What format do you want your config file to be in?&lt;br&gt;
+❯ JavaScript&lt;/em&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;2-prettier개념-및-설치&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2-prettier%EA%B0%9C%EB%85%90-%EB%B0%8F-%EC%84%A4%EC%B9%98&quot; aria-label=&quot;2 prettier개념 및 설치 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2. Prettier개념 및 설치&lt;/h2&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 874px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/443f03a6c41c9a1a464061397a6730bf/ea717/prettier.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 42.91666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAJABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAEDBf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAe7NBFH/xAAYEAACAwAAAAAAAAAAAAAAAAAAAhEgIf/aAAgBAQABBQLSWr//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAWEAADAAAAAAAAAAAAAAAAAAAAIDH/2gAIAQEABj8CIv8A/8QAGxAAAQQDAAAAAAAAAAAAAAAAAQARICExYZH/2gAIAQEAAT8hdpoLR6hi4f/aAAwDAQACAAMAAAAQQA//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/ED//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/ED//xAAbEAEAAgIDAAAAAAAAAAAAAAABESEAIDFBkf/aAAgBAQABPxAkBGaGqzk8MpQiHsmdP//Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/443f03a6c41c9a1a464061397a6730bf/8ac56/prettier.webp 240w,
+/static/443f03a6c41c9a1a464061397a6730bf/d3be9/prettier.webp 480w,
+/static/443f03a6c41c9a1a464061397a6730bf/02c22/prettier.webp 874w&quot;
+              sizes=&quot;(max-width: 874px) 100vw, 874px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/443f03a6c41c9a1a464061397a6730bf/09b79/prettier.jpg 240w,
+/static/443f03a6c41c9a1a464061397a6730bf/7cc5e/prettier.jpg 480w,
+/static/443f03a6c41c9a1a464061397a6730bf/ea717/prettier.jpg 874w&quot;
+            sizes=&quot;(max-width: 874px) 100vw, 874px&quot;
+            type=&quot;image/jpeg&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/443f03a6c41c9a1a464061397a6730bf/ea717/prettier.jpg&quot;
+            alt=&quot;Prettier&quot;
+            title=&quot;Prettier&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&quot;--prettier란&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#--prettier%EB%9E%80&quot; aria-label=&quot;  prettier란 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;✔  Prettier란?&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Prettier는 코드에 적용되어있던 스타일을 무시하고, 설정되어있는 정해진 규칙에 따라 &lt;strong&gt;자동으로 코드 스타일을 정리해 주는 코드 포멧터&lt;/strong&gt;이다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;코드 포멧터&lt;/strong&gt; ⇒ 개발자가 작성한 코드를 정해진 코딩 스타일을 따르도록 변환해주는 도구   &lt;/li&gt;
+&lt;li&gt;코드의 한줄 최대 길이나, 탭의 길이, 따옴표 종류 등 &lt;strong&gt;&lt;u&gt;코딩 스타일을 일괄적으로 통일&lt;/u&gt;&lt;/strong&gt;해준다는 점에서, 특정 문법 요소를 사용하도록 해서 코드 퀄리티를 높여주는 ESLint와 차이점을 가지고 있다.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;--prettier-설치&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#--prettier-%EC%84%A4%EC%B9%98&quot; aria-label=&quot;  prettier 설치 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;✔  Prettier 설치&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;npm i prettier -D -E&lt;/code&gt; 명령어를 사용하여 Prettier를 설치한다.&lt;br&gt;
+( -E는 —save-exac의 축약형이다.)&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;npx prettier test.js&lt;/code&gt; 명령어로 Prettier를 실행한다. &lt;/li&gt;
+&lt;li&gt;위 명령을 수행할 때 코드 자체를 수정하고 싶다면 —write옵션을 추가하여 &lt;code class=&quot;language-text&quot;&gt;npx prettier --write test.js&lt;/code&gt;와 같이 명령어를 사용해 준다.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;3-리엑트에-eslint와-prettier-적용하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#3-%EB%A6%AC%EC%97%91%ED%8A%B8%EC%97%90-eslint%EC%99%80-prettier-%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0&quot; aria-label=&quot;3 리엑트에 eslint와 prettier 적용하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;3. 리엑트에 ESLint와 Prettier 적용하기&lt;/h2&gt;
+&lt;br/&gt;
+&lt;h3 id=&quot;-리엑트-프로젝트-생성&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#-%EB%A6%AC%EC%97%91%ED%8A%B8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%83%9D%EC%84%B1&quot; aria-label=&quot; 리엑트 프로젝트 생성 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;✔ 리엑트 프로젝트 생성&lt;/h3&gt;
+&lt;p&gt; 터미널에서 아래 명령어를 수행하여 리엑트 프로젝트를 생성해 준다.&lt;br&gt;
+명령어 : &lt;code class=&quot;language-text&quot;&gt;create-react-app 프로젝트이름 --use-npm&lt;/code&gt;&lt;br&gt;
+&lt;br/&gt;&lt;/p&gt;
+&lt;h3 id=&quot;-prettier와-eslint를-같이-사용하려면&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#-prettier%EC%99%80-eslint%EB%A5%BC-%EA%B0%99%EC%9D%B4-%EC%82%AC%EC%9A%A9%ED%95%98%EB%A0%A4%EB%A9%B4&quot; aria-label=&quot; prettier와 eslint를 같이 사용하려면 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;✔ Prettier와 ESLint를 같이 사용하려면?&lt;/h3&gt;
+&lt;p&gt; &lt;strong&gt;eslint-config-prettier&lt;/strong&gt; 와 &lt;strong&gt;eslint-plugin-prettier&lt;/strong&gt; 모듈을 추가해줘야 한다.&lt;br&gt;
+명령어 : &lt;code class=&quot;language-text&quot;&gt;npm i eslint-plugin-prettier eslint-config-prettier -D&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt; 그 다음 &lt;strong&gt;VSCode의 Extensions: Marketplace&lt;/strong&gt;로 들어가서 ESLint와 Prettier를 검색하여 설치한다.&lt;br&gt;
+&lt;br/&gt;&lt;/p&gt;
+&lt;h3 id=&quot;-설정파일-수정&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#-%EC%84%A4%EC%A0%95%ED%8C%8C%EC%9D%BC-%EC%88%98%EC%A0%95&quot; aria-label=&quot; 설정파일 수정 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;✔ 설정파일 수정&lt;/h3&gt;
+&lt;p&gt;  ♧  settings.json 파일을 열어 아래처럼 VSCode설정을 해준다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;{
+// Set the default  
+&quot;editor.formatOnSave&quot;: false,  
+// Enable per-language  
+&quot;[javascript]&quot;: {  
+ &quot;editor.formatOnSave&quot;: true  
+},  
+&quot;editor.codeActionsOnSave&quot;: {  
+ // For ESLint  
+ &quot;source.fixAll.eslint&quot;: true  
+}  
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;♧  터미널에서 아래 명령어를 수행하여 Airbnb Style Guide를 적용해준다.&lt;br&gt;
+명령어 : &lt;code class=&quot;language-text&quot;&gt;npm i -D eslint-config-airbnb&lt;/code&gt; &lt;/p&gt;
+&lt;p&gt;♧  그 다음 &lt;strong&gt;.eslintrc.json&lt;/strong&gt; 파일의 “extends”속성에 “airbnb”를 추가 해준다.  &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;{
+&quot;plugins&quot;: [&quot;prettier&quot;],
+&quot;extends&quot;: [&quot;eslint:recommended&quot;, &quot;plugin:prettier/recommended&quot;,&quot;airbnb&quot;],
+&quot;rules&quot;: {
+&quot;prettier/prettier&quot;: &quot;error&quot;
+}
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;♧  Prettier또한 ESLint와 마찬가지로 루트 경로에 &lt;strong&gt;.prettierrc.json&lt;/strong&gt; 파일을 만들어 주고, 필요한 옵션을 골라 설정해 준다.  &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;ex)
+{
+ &quot;trailingComma&quot;: &quot;es5&quot;,
+ &quot;tabWidth&quot;: 2,
+ &quot;semi&quot;: true,
+ &quot;singleQuote&quot;: true
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&quot;추가-참고&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%B6%94%EA%B0%80-%EC%B0%B8%EA%B3%A0&quot; aria-label=&quot;추가 참고 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;추가 참고&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://sunmon.github.io/vscode-eslint-prettier-setting/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://sunmon.github.io/vscode-eslint-prettier-setting/&lt;/a&gt;&lt;br&gt;
+&lt;a href=&quot;https://velog.io/@recordboy/ESLint-Prettier-%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://velog.io/@recordboy/ESLint-Prettier-%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0&lt;/a&gt;&lt;br&gt;
+&lt;a href=&quot;https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&amp;#x26;blogId=dilrong&amp;#x26;logNo=221413095305&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&amp;#x26;blogId=dilrong&amp;#x26;logNo=221413095305&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Front-end 개발 시 유용한 사이트]]></title><description><![CDATA[Front-end 개발자가 참고하면 좋을만한 사이트 리스트.]]></description><link>https://learomero.github.io//posts/useful-sites-for-Front-end-Developer</link><guid isPermaLink="false">https://learomero.github.io//posts/useful-sites-for-Front-end-Developer</guid><pubDate>Wed, 14 Jul 2021 20:54:32 GMT</pubDate><content:encoded>&lt;ul&gt;
+&lt;li&gt;
+&lt;h2 id=&quot;nodejs&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#nodejs&quot; aria-label=&quot;nodejs permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;node.js​&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;-&lt;/em&gt; node.js 다운로드&lt;br&gt;
+&lt;em&gt;-&lt;/em&gt; 사이트 URL: &lt;a href=&quot;https://nodejs.org/en/download/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://nodejs.org/en/download/&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;-&lt;/em&gt; 이전릴리즈 페이지에서 원하는 버전과 OS에 맞춰서 설치 가능  &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;  &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 579px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/a47ce79af0dedb7647e698ab29e9ce3f/49898/nodejs-previous-releases.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 22.083333333333332%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAEABQDASIAAhEBAxEB/8QAFwABAAMAAAAAAAAAAAAAAAAAAAEDBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHZuIkV/8QAFxAAAwEAAAAAAAAAAAAAAAAAAQIQIf/aAAgBAQABBQILs//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABYQAAMAAAAAAAAAAAAAAAAAAAEQMf/aAAgBAQAGPwKl/wD/xAAXEAADAQAAAAAAAAAAAAAAAAAQETGB/9oACAEBAAE/Iac2f//aAAwDAQACAAMAAAAQ9A//xAAVEQEBAAAAAAAAAAAAAAAAAAABEP/aAAgBAwEBPxBn/8QAFREBAQAAAAAAAAAAAAAAAAAAARD/2gAIAQIBAT8QJ//EABgQAQEBAQEAAAAAAAAAAAAAAAERIQAQ/9oACAEBAAE/EJ3TbWOAPP/Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/a47ce79af0dedb7647e698ab29e9ce3f/8ac56/nodejs-previous-releases.webp 240w,
+/static/a47ce79af0dedb7647e698ab29e9ce3f/d3be9/nodejs-previous-releases.webp 480w,
+/static/a47ce79af0dedb7647e698ab29e9ce3f/0c108/nodejs-previous-releases.webp 579w&quot;
+              sizes=&quot;(max-width: 579px) 100vw, 579px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/a47ce79af0dedb7647e698ab29e9ce3f/09b79/nodejs-previous-releases.jpg 240w,
+/static/a47ce79af0dedb7647e698ab29e9ce3f/7cc5e/nodejs-previous-releases.jpg 480w,
+/static/a47ce79af0dedb7647e698ab29e9ce3f/49898/nodejs-previous-releases.jpg 579w&quot;
+            sizes=&quot;(max-width: 579px) 100vw, 579px&quot;
+            type=&quot;image/jpeg&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/a47ce79af0dedb7647e698ab29e9ce3f/49898/nodejs-previous-releases.jpg&quot;
+            alt=&quot;nodejs-pre-rel&quot;
+            title=&quot;nodejs-pre-rel&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;h2 id=&quot;mongodb-cloud&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#mongodb-cloud&quot; aria-label=&quot;mongodb cloud permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;mongoDB cloud&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;-&lt;/em&gt; 무료/유료 db 클라우드 제공&lt;br&gt;
+&lt;em&gt;-&lt;/em&gt; 사이트 URL: &lt;a href=&quot;https://www.mongodb.com/cloud&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://www.mongodb.com/cloud&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;-&lt;/em&gt; 무료로 선택 시 데이터 용량 500MB까지 제공해주고 있다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;h2 id=&quot;styled-components&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#styled-components&quot; aria-label=&quot;styled components permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;styled-components&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;-&lt;/em&gt; CSS-in-JS&lt;br&gt;
+&lt;em&gt;-&lt;/em&gt; 사이트 URL: &lt;a href=&quot;https://styled-components.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://styled-components.com/&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;-&lt;/em&gt; npm install 명령어를 통해 설치가 가능하다  &lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/dd48858097cf071bcba8bde24e20872f/25a78/styled_install.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAABABQDASIAAhEBAxEB/8QAFwABAAMAAAAAAAAAAAAAAAAAAAECBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHKoWQD/8QAFBABAAAAAAAAAAAAAAAAAAAAEP/aAAgBAQABBQJ//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFBABAAAAAAAAAAAAAAAAAAAAEP/aAAgBAQAGPwJ//8QAFxAAAwEAAAAAAAAAAAAAAAAAAAEQMf/aAAgBAQABPyEez//aAAwDAQACAAMAAAAQd9//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/ED//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/ED//xAAYEAACAwAAAAAAAAAAAAAAAAAAMQEQcf/aAAgBAQABPxCGP2v/2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/dd48858097cf071bcba8bde24e20872f/8ac56/styled_install.webp 240w,
+/static/dd48858097cf071bcba8bde24e20872f/d3be9/styled_install.webp 480w,
+/static/dd48858097cf071bcba8bde24e20872f/e46b2/styled_install.webp 960w,
+/static/dd48858097cf071bcba8bde24e20872f/49d62/styled_install.webp 1091w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/dd48858097cf071bcba8bde24e20872f/09b79/styled_install.jpg 240w,
+/static/dd48858097cf071bcba8bde24e20872f/7cc5e/styled_install.jpg 480w,
+/static/dd48858097cf071bcba8bde24e20872f/6a068/styled_install.jpg 960w,
+/static/dd48858097cf071bcba8bde24e20872f/25a78/styled_install.jpg 1091w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/jpeg&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/dd48858097cf071bcba8bde24e20872f/6a068/styled_install.jpg&quot;
+            alt=&quot;styled_i&quot;
+            title=&quot;styled_i&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;h2 id=&quot;emotiion&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#emotiion&quot; aria-label=&quot;emotiion permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;emotiion&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;-&lt;/em&gt; CSS-in-JS&lt;br&gt;
+&lt;em&gt;-&lt;/em&gt; 사이트 URL: &lt;a href=&quot;https://emotion.sh/docs/introduction&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://emotion.sh/docs/introduction&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;-&lt;/em&gt; npm install 명령어를 통해 설치가 가능하다  &lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/ed99fca45e42087e2912953a4d29047b/dad04/emotion_install.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 7.083333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAABABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAIF/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/2gAMAwEAAhADEAAAAcyCwD//xAAVEAEBAAAAAAAAAAAAAAAAAAABEP/aAAgBAQABBQJv/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFBABAAAAAAAAAAAAAAAAAAAAEP/aAAgBAQAGPwJ//8QAFRABAQAAAAAAAAAAAAAAAAAAEDH/2gAIAQEAAT8hh//aAAwDAQACAAMAAAAQf/8A/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxA//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxA//8QAFRABAQAAAAAAAAAAAAAAAAAAEDH/2gAIAQEAAT8Qi//Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/ed99fca45e42087e2912953a4d29047b/8ac56/emotion_install.webp 240w,
+/static/ed99fca45e42087e2912953a4d29047b/d3be9/emotion_install.webp 480w,
+/static/ed99fca45e42087e2912953a4d29047b/e46b2/emotion_install.webp 960w,
+/static/ed99fca45e42087e2912953a4d29047b/525da/emotion_install.webp 1039w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/ed99fca45e42087e2912953a4d29047b/09b79/emotion_install.jpg 240w,
+/static/ed99fca45e42087e2912953a4d29047b/7cc5e/emotion_install.jpg 480w,
+/static/ed99fca45e42087e2912953a4d29047b/6a068/emotion_install.jpg 960w,
+/static/ed99fca45e42087e2912953a4d29047b/dad04/emotion_install.jpg 1039w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/jpeg&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/ed99fca45e42087e2912953a4d29047b/6a068/emotion_install.jpg&quot;
+            alt=&quot;emotion_i&quot;
+            title=&quot;emotion_i&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;h2 id=&quot;ant-design&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#ant-design&quot; aria-label=&quot;ant design permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;ant-design​&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;-&lt;/em&gt; 다양한 아이콘 사용 가능&lt;br&gt;
+&lt;em&gt;-&lt;/em&gt; 사이트 URL: &lt;a href=&quot;https://ant.design/components/icon/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://ant.design/components/icon/&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;-&lt;/em&gt; npm install 명령어를 통해 설치가 가능하다  &lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/b7fc934ede139496c58d179a2a84138b/0c20b/antd_install.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 7.083333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAABABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAIF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAB2wUD/8QAFhAAAwAAAAAAAAAAAAAAAAAAAAEQ/9oACAEBAAEFAhT/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAQ/9oACAEBAAY/An//xAAUEAEAAAAAAAAAAAAAAAAAAAAQ/9oACAEBAAE/IV//2gAMAwEAAgADAAAAEHfP/8QAFREBAQAAAAAAAAAAAAAAAAAAARD/2gAIAQMBAT8QZ//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8QP//EABgQAAIDAAAAAAAAAAAAAAAAAAABEDFB/9oACAEBAAE/EHRqP//Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/b7fc934ede139496c58d179a2a84138b/8ac56/antd_install.webp 240w,
+/static/b7fc934ede139496c58d179a2a84138b/d3be9/antd_install.webp 480w,
+/static/b7fc934ede139496c58d179a2a84138b/e46b2/antd_install.webp 960w,
+/static/b7fc934ede139496c58d179a2a84138b/9012d/antd_install.webp 992w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/b7fc934ede139496c58d179a2a84138b/09b79/antd_install.jpg 240w,
+/static/b7fc934ede139496c58d179a2a84138b/7cc5e/antd_install.jpg 480w,
+/static/b7fc934ede139496c58d179a2a84138b/6a068/antd_install.jpg 960w,
+/static/b7fc934ede139496c58d179a2a84138b/0c20b/antd_install.jpg 992w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/jpeg&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/b7fc934ede139496c58d179a2a84138b/6a068/antd_install.jpg&quot;
+            alt=&quot;antd_i&quot;
+            title=&quot;antd_i&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;h2 id=&quot;echarts&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#echarts&quot; aria-label=&quot;echarts permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;echarts&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;-&lt;/em&gt; 자바스크립트 차트 라이브러리&lt;br&gt;
+&lt;em&gt;-&lt;/em&gt; 사이트 URL: &lt;a href=&quot;https://echarts.apache.org/examples/en/index.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://echarts.apache.org/examples/en/index.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;-&lt;/em&gt; 좋은 퀄리티의 다양한 차트들을 구현하기 용이하다.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 879px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/655d85c6f05825a5eb809a1839c7246e/b54c8/echarts_page.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 59.583333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAMABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAMEBf/EABUBAQEAAAAAAAAAAAAAAAAAAAEC/9oADAMBAAIQAxAAAAHSkpkRoso//8QAGhAAAwEBAQEAAAAAAAAAAAAAAQIDBAASE//aAAgBAQABBQLQ1EX66fQpftcxRBFByxUD/8QAFhEBAQEAAAAAAAAAAAAAAAAAAAER/9oACAEDAQE/AWx//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAHRABAAEDBQAAAAAAAAAAAAAAAQACEBETIzJRgf/aAAgBAQAGPwI0qcsNsxOJAe55b//EABwQAAICAgMAAAAAAAAAAAAAAAERACExcUGB4f/aAAgBAQABPyEhhMbBgVYlnrcXt2vYS0hNUODLo+cSqOf/2gAMAwEAAgADAAAAENzP/8QAFREBAQAAAAAAAAAAAAAAAAAAARD/2gAIAQMBAT8QZf/EABgRAAMBAQAAAAAAAAAAAAAAAAABESEx/9oACAECAQE/EFINbw//xAAdEAEAAgICAwAAAAAAAAAAAAABABEhMUFhUZHR/9oACAEBAAE/EK+2SYCt7OYlIotGnJ9ovP8ARECoqlw4TklJiptrDDxFoKX18n//2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/655d85c6f05825a5eb809a1839c7246e/8ac56/echarts_page.webp 240w,
+/static/655d85c6f05825a5eb809a1839c7246e/d3be9/echarts_page.webp 480w,
+/static/655d85c6f05825a5eb809a1839c7246e/6f82a/echarts_page.webp 879w&quot;
+              sizes=&quot;(max-width: 879px) 100vw, 879px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/655d85c6f05825a5eb809a1839c7246e/09b79/echarts_page.jpg 240w,
+/static/655d85c6f05825a5eb809a1839c7246e/7cc5e/echarts_page.jpg 480w,
+/static/655d85c6f05825a5eb809a1839c7246e/b54c8/echarts_page.jpg 879w&quot;
+            sizes=&quot;(max-width: 879px) 100vw, 879px&quot;
+            type=&quot;image/jpeg&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/655d85c6f05825a5eb809a1839c7246e/b54c8/echarts_page.jpg&quot;
+            alt=&quot;echarts_page&quot;
+            title=&quot;echarts_page&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;h2 id=&quot;vue-가이드-페이지&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#vue-%EA%B0%80%EC%9D%B4%EB%93%9C-%ED%8E%98%EC%9D%B4%EC%A7%80&quot; aria-label=&quot;vue 가이드 페이지 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;vue 가이드 페이지&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;-&lt;/em&gt; 뷰 설치, 개념, 문법 등에 대해 참고할수 있는 사이트&lt;br&gt;
+&lt;em&gt;-&lt;/em&gt; 사이트 URL: &lt;a href=&quot;https://kr.vuejs.org/v2/guide/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://kr.vuejs.org/v2/guide/&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/4a7a26ee265205ec309e61a48f50aa87/9d222/vue_guide.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 53.75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAIBBf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAe62Sgf/xAAVEAEBAAAAAAAAAAAAAAAAAAAQQf/aAAgBAQABBQKEP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABQQAQAAAAAAAAAAAAAAAAAAACD/2gAIAQEABj8CX//EABgQAQEAAwAAAAAAAAAAAAAAAAEAEGFx/9oACAEBAAE/IRg6jmBF/9oADAMBAAIAAwAAABALD//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8QP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8QP//EABoQAAMAAwEAAAAAAAAAAAAAAAABESExQYH/2gAIAQEAAT8Qc6jWxsjpjVcGvI2B8H//2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/4a7a26ee265205ec309e61a48f50aa87/8ac56/vue_guide.webp 240w,
+/static/4a7a26ee265205ec309e61a48f50aa87/d3be9/vue_guide.webp 480w,
+/static/4a7a26ee265205ec309e61a48f50aa87/e46b2/vue_guide.webp 960w,
+/static/4a7a26ee265205ec309e61a48f50aa87/d9e4a/vue_guide.webp 1128w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/4a7a26ee265205ec309e61a48f50aa87/09b79/vue_guide.jpg 240w,
+/static/4a7a26ee265205ec309e61a48f50aa87/7cc5e/vue_guide.jpg 480w,
+/static/4a7a26ee265205ec309e61a48f50aa87/6a068/vue_guide.jpg 960w,
+/static/4a7a26ee265205ec309e61a48f50aa87/9d222/vue_guide.jpg 1128w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/jpeg&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/4a7a26ee265205ec309e61a48f50aa87/6a068/vue_guide.jpg&quot;
+            alt=&quot;vue_guide&quot;
+            title=&quot;vue_guide&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;h2 id=&quot;react-가이드-페이지&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#react-%EA%B0%80%EC%9D%B4%EB%93%9C-%ED%8E%98%EC%9D%B4%EC%A7%80&quot; aria-label=&quot;react 가이드 페이지 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;react 가이드 페이지&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;-&lt;/em&gt; 리엑트 설치, 개념, 문법 등에 대해 참고할수 있는 사이트&lt;br&gt;
+&lt;em&gt;-&lt;/em&gt; 사이트 URL: &lt;a href=&quot;https://reactjs.org/docs/getting-started.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://reactjs.org/docs/getting-started.html&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/863153c50cc7e86e4b6e9ee1cc3d3765/15ae0/react_guide.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 63.74999999999999%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAANABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAEDBAX/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAHruzM5YP/EABoQAAICAwAAAAAAAAAAAAAAAAATAQMCEBH/2gAIAQEAAQUCVgKr4qsjf//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABkQAAIDAQAAAAAAAAAAAAAAAAIyACCRkv/aAAgBAQAGPwJB5iDkQcp//8QAHBAAAQMFAAAAAAAAAAAAAAAAAAExwRARIWFx/9oACAEBAAE/Ic0M2PkSxHHKK1P/2gAMAwEAAgADAAAAEAPP/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxA//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxA//8QAHBABAAMAAgMAAAAAAAAAAAAAAQARMRAhQcHw/9oACAEBAAE/EG1QF5BJZDavUQFZ+PE7L3tTfj//2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/863153c50cc7e86e4b6e9ee1cc3d3765/8ac56/react_guide.webp 240w,
+/static/863153c50cc7e86e4b6e9ee1cc3d3765/d3be9/react_guide.webp 480w,
+/static/863153c50cc7e86e4b6e9ee1cc3d3765/e46b2/react_guide.webp 960w,
+/static/863153c50cc7e86e4b6e9ee1cc3d3765/d30cc/react_guide.webp 1092w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/863153c50cc7e86e4b6e9ee1cc3d3765/09b79/react_guide.jpg 240w,
+/static/863153c50cc7e86e4b6e9ee1cc3d3765/7cc5e/react_guide.jpg 480w,
+/static/863153c50cc7e86e4b6e9ee1cc3d3765/6a068/react_guide.jpg 960w,
+/static/863153c50cc7e86e4b6e9ee1cc3d3765/15ae0/react_guide.jpg 1092w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/jpeg&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/863153c50cc7e86e4b6e9ee1cc3d3765/6a068/react_guide.jpg&quot;
+            alt=&quot;react_guide&quot;
+            title=&quot;react_guide&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;br/&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[useMemo와 useCallback의 사용]]></title><description><![CDATA[useMemo와 useCallback의 개념에 대해 알아보고, 간단한 사용 방법에 대해서 알아볼 수 있습니다.]]></description><link>https://learomero.github.io//posts/useMemo-and-useCallback</link><guid isPermaLink="false">https://learomero.github.io//posts/useMemo-and-useCallback</guid><pubDate>Sat, 10 Jul 2021 18:40:32 GMT</pubDate><content:encoded>&lt;h2 id=&quot;1-usememo란&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-usememo%EB%9E%80&quot; aria-label=&quot;1 usememo란 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. useMemo란?&lt;/h2&gt;
+&lt;p&gt;  성능 최적화를 위하여 연산된 값을 재사용하는 기능을 가진 함수로 컴포넌트가 리렌더링 될때마다 실행되는 불필요한 연산을 방지  &lt;/p&gt;
+&lt;h2 id=&quot;2-usememo-사용-방법&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2-usememo-%EC%82%AC%EC%9A%A9-%EB%B0%A9%EB%B2%95&quot; aria-label=&quot;2 usememo 사용 방법 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2. useMemo 사용 방법&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;h3 id=&quot;usememo를-사용하지-않은-경우&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#usememo%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EC%A7%80-%EC%95%8A%EC%9D%80-%EA%B2%BD%EC%9A%B0&quot; aria-label=&quot;usememo를 사용하지 않은 경우 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;useMemo를 사용하지 않은 경우&lt;/h3&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;  &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/561228da210bdefc82630660b03f57e6/a2510/no_useMemo0.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 9.166666666666668%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAACABQDASIAAhEBAxEB/8QAFwABAAMAAAAAAAAAAAAAAAAAAAECBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAC/9oADAMBAAIQAxAAAAHGguKg/8QAFhAAAwAAAAAAAAAAAAAAAAAAAAEQ/9oACAEBAAEFAhz/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAQ/9oACAEBAAY/An//xAAUEAEAAAAAAAAAAAAAAAAAAAAQ/9oACAEBAAE/IV//2gAMAwEAAgADAAAAEAfP/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxA//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxA//8QAGRAAAQUAAAAAAAAAAAAAAAAAAQAQETFB/9oACAEBAAE/EATNrDf/2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/561228da210bdefc82630660b03f57e6/8ac56/no_useMemo0.webp 240w,
+/static/561228da210bdefc82630660b03f57e6/d3be9/no_useMemo0.webp 480w,
+/static/561228da210bdefc82630660b03f57e6/e46b2/no_useMemo0.webp 960w,
+/static/561228da210bdefc82630660b03f57e6/a5d4d/no_useMemo0.webp 1000w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/561228da210bdefc82630660b03f57e6/09b79/no_useMemo0.jpg 240w,
+/static/561228da210bdefc82630660b03f57e6/7cc5e/no_useMemo0.jpg 480w,
+/static/561228da210bdefc82630660b03f57e6/6a068/no_useMemo0.jpg 960w,
+/static/561228da210bdefc82630660b03f57e6/a2510/no_useMemo0.jpg 1000w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/jpeg&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/561228da210bdefc82630660b03f57e6/6a068/no_useMemo0.jpg&quot;
+            alt=&quot;no_useMemo&quot;
+            title=&quot;no_useMemo&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;  &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 781px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/993385fdffe78a902a956614a4838dd3/1cf11/no_useMemo.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 63.33333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAANABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAgABBf/EABYBAQEBAAAAAAAAAAAAAAAAAAIAAf/aAAwDAQACEAMQAAAB44eICVt//8QAFhAAAwAAAAAAAAAAAAAAAAAAESAh/9oACAEBAAEFAoF//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFRABAQAAAAAAAAAAAAAAAAAAICH/2gAIAQEABj8Cq//EABsQAAMAAgMAAAAAAAAAAAAAAAABERAhMVFh/9oACAEBAAE/IVXYPnFa1orJ6f/aAAwDAQACAAMAAAAQzw//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/ED//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/ED//xAAcEAEAAwACAwAAAAAAAAAAAAABABEhQWEQMXH/2gAIAQEAAT8QFpfSwgg063xVpgzSKc++dilts9z/2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/993385fdffe78a902a956614a4838dd3/8ac56/no_useMemo.webp 240w,
+/static/993385fdffe78a902a956614a4838dd3/d3be9/no_useMemo.webp 480w,
+/static/993385fdffe78a902a956614a4838dd3/42cfc/no_useMemo.webp 781w&quot;
+              sizes=&quot;(max-width: 781px) 100vw, 781px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/993385fdffe78a902a956614a4838dd3/09b79/no_useMemo.jpg 240w,
+/static/993385fdffe78a902a956614a4838dd3/7cc5e/no_useMemo.jpg 480w,
+/static/993385fdffe78a902a956614a4838dd3/1cf11/no_useMemo.jpg 781w&quot;
+            sizes=&quot;(max-width: 781px) 100vw, 781px&quot;
+            type=&quot;image/jpeg&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/993385fdffe78a902a956614a4838dd3/1cf11/no_useMemo.jpg&quot;
+            alt=&quot;no_useMemo&quot;
+            title=&quot;no_useMemo&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;  이렇게 변수를 정의하고, return 내에서 count값을 사용하게 되면 users에 변화가 없더라도 컴포넌트가 리렌더링 될때마다 countActiveUsers 함수가 실행되게 된다.&lt;/p&gt;
+&lt;p&gt;  이러한 상태에서 useMemo를 사용해 보자.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;h3 id=&quot;usememo를-사용한-경우&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#usememo%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%9C-%EA%B2%BD%EC%9A%B0&quot; aria-label=&quot;usememo를 사용한 경우 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;useMemo를 사용한 경우&lt;/h3&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;  &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/eec7da54da71520fcda14b6104ce02c7/693cc/useMemo.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 9.583333333333332%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAACABQDASIAAhEBAxEB/8QAFwABAAMAAAAAAAAAAAAAAAAAAAECBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAC/9oADAMBAAIQAxAAAAHGkuKg/8QAFBABAAAAAAAAAAAAAAAAAAAAEP/aAAgBAQABBQJ//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFBABAAAAAAAAAAAAAAAAAAAAEP/aAAgBAQAGPwJ//8QAFxABAAMAAAAAAAAAAAAAAAAAAQAQQf/aAAgBAQABPyHGmf/aAAwDAQACAAMAAAAQh8//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/ED//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/ED//xAAZEAABBQAAAAAAAAAAAAAAAAAAATFBcbH/2gAIAQEAAT8QwIHpR//Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/eec7da54da71520fcda14b6104ce02c7/8ac56/useMemo.webp 240w,
+/static/eec7da54da71520fcda14b6104ce02c7/d3be9/useMemo.webp 480w,
+/static/eec7da54da71520fcda14b6104ce02c7/e46b2/useMemo.webp 960w,
+/static/eec7da54da71520fcda14b6104ce02c7/6257a/useMemo.webp 988w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/eec7da54da71520fcda14b6104ce02c7/09b79/useMemo.jpg 240w,
+/static/eec7da54da71520fcda14b6104ce02c7/7cc5e/useMemo.jpg 480w,
+/static/eec7da54da71520fcda14b6104ce02c7/6a068/useMemo.jpg 960w,
+/static/eec7da54da71520fcda14b6104ce02c7/693cc/useMemo.jpg 988w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/jpeg&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/eec7da54da71520fcda14b6104ce02c7/6a068/useMemo.jpg&quot;
+            alt=&quot;useMemo&quot;
+            title=&quot;useMemo&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;  이렇게 useMemo를 사용해서 count에 countActiveUsers함수를 할당하는 경우 최초 호출 시 연산한 값을 기억(memorized)해두었다가 내용이 바뀌지 않는다면 기억해두었던 원래의 연산값을 재사용하게 된다.&lt;/p&gt;
+&lt;p&gt;  &lt;strong&gt;✔  useRef와의 차이&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;  useRef는 단순히 특정 값을 기억한다면, useMemo는 deps가 변경되기 전까지의 값과 복잡한 함수의 return값을 보관하는 역할로 사용 &lt;/p&gt;
+&lt;h2 id=&quot;3-usecallback이란&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#3-usecallback%EC%9D%B4%EB%9E%80&quot; aria-label=&quot;3 usecallback이란 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;3. useCallback이란?&lt;/h2&gt;
+&lt;p&gt;  useMemo가 특정 value를 재사용하기 위함이라면, useCallback은 특정 함수를 새로 만들지 않고 재사용하기 위해 사용하는 Hook&lt;/p&gt;
+&lt;h2 id=&quot;4-usecallback-사용-방법&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#4-usecallback-%EC%82%AC%EC%9A%A9-%EB%B0%A9%EB%B2%95&quot; aria-label=&quot;4 usecallback 사용 방법 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;4. useCallback 사용 방법&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;h3 id=&quot;usecallback으로-정의하고-조건을-달아준다&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#usecallback%EC%9C%BC%EB%A1%9C-%EC%A0%95%EC%9D%98%ED%95%98%EA%B3%A0-%EC%A1%B0%EA%B1%B4%EC%9D%84-%EB%8B%AC%EC%95%84%EC%A4%80%EB%8B%A4&quot; aria-label=&quot;usecallback으로 정의하고 조건을 달아준다 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;useCallback으로 정의하고 조건을 달아준다&lt;/h3&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 763px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/7bba6755bb5f6c1e04d5705117d1d18c/7a8c4/useCallback.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 84.16666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAARABQDASIAAhEBAxEB/8QAGAABAAMBAAAAAAAAAAAAAAAAAAECAwX/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAHl1tQgGwMQf//EABkQAAEFAAAAAAAAAAAAAAAAAAABAiAxQf/aAAgBAQABBQLIoOo//8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwEf/8QAFBABAAAAAAAAAAAAAAAAAAAAMP/aAAgBAQAGPwIf/8QAGxAAAQUBAQAAAAAAAAAAAAAAAQAQESExcWH/2gAIAQEAAT8hkdIk+tFUDKtsBadb/9oADAMBAAIAAwAAABCDBwD/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/EB//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/EB//xAAcEAEAAQUBAQAAAAAAAAAAAAABABARMUGhIZH/2gAIAQEAAT8QQwVaCIwA+0bDcLY+RsytOlncp//Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/7bba6755bb5f6c1e04d5705117d1d18c/8ac56/useCallback.webp 240w,
+/static/7bba6755bb5f6c1e04d5705117d1d18c/d3be9/useCallback.webp 480w,
+/static/7bba6755bb5f6c1e04d5705117d1d18c/0c209/useCallback.webp 763w&quot;
+              sizes=&quot;(max-width: 763px) 100vw, 763px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/7bba6755bb5f6c1e04d5705117d1d18c/09b79/useCallback.jpg 240w,
+/static/7bba6755bb5f6c1e04d5705117d1d18c/7cc5e/useCallback.jpg 480w,
+/static/7bba6755bb5f6c1e04d5705117d1d18c/7a8c4/useCallback.jpg 763w&quot;
+            sizes=&quot;(max-width: 763px) 100vw, 763px&quot;
+            type=&quot;image/jpeg&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/7bba6755bb5f6c1e04d5705117d1d18c/7a8c4/useCallback.jpg&quot;
+            alt=&quot;useCallback&quot;
+            title=&quot;useCallback&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;  useMemo와 유사하게 각 함수마다 useCallback으로 정의하고, 조건을 달아준다. 함수 안에서 사용하는 상태 혹은 props가 있으면 꼭 deps배열 안에 포함시켜야 한다. &lt;/p&gt;
+&lt;p&gt;  이렇게 useCallback을 사용하여 props가 바뀌지 않았으면 VirtualDOM에 새로 렌더링하지 않게 만들 수 있다.&lt;/p&gt;
+&lt;h2 id=&quot;5-react-리렌더링-줄이기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#5-react-%EB%A6%AC%EB%A0%8C%EB%8D%94%EB%A7%81-%EC%A4%84%EC%9D%B4%EA%B8%B0&quot; aria-label=&quot;5 react 리렌더링 줄이기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;5. react 리렌더링 줄이기&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;useMemo / useCallback 사용
+​- 단순히 태그 안에 {margin:10px;}와 같이 값읕 지정해 버리면 매번 다른 객체로 인시되어서 값이 바뀌지 않아도 해당 태그 부분이 리렌더링 될 수 있다. 따라서 스타일 지정 시 styled 사용해서 동일한 객체로 인식되어서 값이 바뀌었을때만 리렌더링이 일어나도록 적용해준다. &lt;/li&gt;
+&lt;li&gt;
+&lt;h4 id=&quot;styled-import-예시&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#styled-import-%EC%98%88%EC%8B%9C&quot; aria-label=&quot;styled import 예시 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;styled import 예시&lt;/h4&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/b4667eb484be8f757c6dbc98a9526689/67c18/styled.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 7.083333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAABABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAIF/8QAFgEBAQEAAAAAAAAAAAAAAAAAAgAB/9oADAMBAAIQAxAAAAHHkQkbf//EABYQAAMAAAAAAAAAAAAAAAAAAAABEP/aAAgBAQABBQIc/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFBABAAAAAAAAAAAAAAAAAAAAEP/aAAgBAQAGPwJ//8QAFhAAAwAAAAAAAAAAAAAAAAAAABAx/9oACAEBAAE/ISl//9oADAMBAAIAAwAAABAPz//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8QP//EABURAQEAAAAAAAAAAAAAAAAAABBB/9oACAECAQE/EKf/xAAYEAACAwAAAAAAAAAAAAAAAAAAEFFxsf/aAAgBAQABPxCLMl//2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/b4667eb484be8f757c6dbc98a9526689/8ac56/styled.webp 240w,
+/static/b4667eb484be8f757c6dbc98a9526689/d3be9/styled.webp 480w,
+/static/b4667eb484be8f757c6dbc98a9526689/e46b2/styled.webp 960w,
+/static/b4667eb484be8f757c6dbc98a9526689/42749/styled.webp 1051w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/b4667eb484be8f757c6dbc98a9526689/09b79/styled.jpg 240w,
+/static/b4667eb484be8f757c6dbc98a9526689/7cc5e/styled.jpg 480w,
+/static/b4667eb484be8f757c6dbc98a9526689/6a068/styled.jpg 960w,
+/static/b4667eb484be8f757c6dbc98a9526689/67c18/styled.jpg 1051w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/jpeg&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/b4667eb484be8f757c6dbc98a9526689/6a068/styled.jpg&quot;
+            alt=&quot;styled-component import&quot;
+            title=&quot;styled-component import&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&quot;추가-참고&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%B6%94%EA%B0%80-%EC%B0%B8%EA%B3%A0&quot; aria-label=&quot;추가 참고 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;추가 참고&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://crmrelease.tistory.com/41&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://crmrelease.tistory.com/41&lt;/a&gt;&lt;br&gt;
+&lt;a href=&quot;https://devrappers.tistory.com/60&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://devrappers.tistory.com/60&lt;/a&gt;&lt;br&gt;
+&lt;a href=&quot;https://devrappers.tistory.com/61?category=856236&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://devrappers.tistory.com/61?category=856236&lt;/a&gt;&lt;br&gt;
+&lt;a href=&quot;https://react.vlpt.us/basic/18-useCallback.html%E2%80%8B&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://react.vlpt.us/basic/18-useCallback.html​&lt;/a&gt;  &lt;/p&gt;</content:encoded></item><item><title><![CDATA[VUE 성능 최적화]]></title><description><![CDATA[Vue 성능 최적화를 위한 방법을 설명합니다. 간단한 한 옵션을 통해 렌더링 성능을 개선할 수 있습니다.]]></description><link>https://learomero.github.io//posts/vue-performance</link><guid isPermaLink="false">https://learomero.github.io//posts/vue-performance</guid><pubDate>Mon, 07 Jun 2021 22:40:32 GMT</pubDate><content:encoded>&lt;p&gt;뷰 성능을 개선하기 위해 어떤 방법들이 있을까 생각하던 중 잘 정리되어 있는 블로그가 있어서 소개해 드릴려고 합니다. 웹은 자바스크립트의 알고리즘보다 브라우저의 렌더링, 리플로우를 최대한 줄이는 것이 성능에 도움이 됩니다. 렌더링을 자주 하지 않는 컴포넌트에 대해서 v-once, keep-alive를 해준다던지 v-if와 v-show를 잘 구분해서 쓰는것도 사소하지만 성능에 도움이 됩니다.&lt;/p&gt;
+&lt;h1 id=&quot;vue-성능-개선하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#vue-%EC%84%B1%EB%8A%A5-%EA%B0%9C%EC%84%A0%ED%95%98%EA%B8%B0&quot; aria-label=&quot;vue 성능 개선하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Vue 성능 개선하기&lt;/h1&gt;
+&lt;p&gt;Vue 렌더링 성능 개선을 위한 간단한 방법 몇가지를 설명합니다.이 문서는 Vue.js 2.6.10 버전을 기준으로 작성되었으며, 자세한 설명은 참고 링크를 확인해주세요.&lt;/p&gt;
+&lt;h2 id=&quot;함수형-컴포넌트functional-component-사용하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%95%A8%EC%88%98%ED%98%95-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8functional-component-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0&quot; aria-label=&quot;함수형 컴포넌트functional component 사용하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;함수형 컴포넌트(Functional Component) 사용하기&lt;/h2&gt;
+&lt;p&gt;함수형 컴포넌트는 Dumb(멍청한, 바보같은) 컴포넌트 또는 Stateless (상태 없는) 컴포넌트로 불리며, Data와 Lifecycle을 가지지 않은 컴포넌트를 지칭합니다.기존의 &lt;code class=&quot;language-text&quot;&gt;props&lt;/code&gt;만 가지고 있는 컴포넌트에 &lt;code class=&quot;language-text&quot;&gt;functional&lt;/code&gt; 선언을 통해 앱 성능을 향상시킬 수 있습니다.&lt;/p&gt;
+&lt;h3 id=&quot;함수형-컴포넌트-선언과-사용&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%95%A8%EC%88%98%ED%98%95-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EC%84%A0%EC%96%B8%EA%B3%BC-%EC%82%AC%EC%9A%A9&quot; aria-label=&quot;함수형 컴포넌트 선언과 사용 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;함수형 컴포넌트 선언과 사용&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;Vue&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;component&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;my-component&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  functional&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token function-variable function&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;createElement&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; context&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token comment&quot;&gt;// ...&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;// Props는 선택사항입니다.&lt;/span&gt;
+  props&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token comment&quot;&gt;// ...&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;2.5.0+&lt;/code&gt; 이후로, 싱글 파일 컴포넌트를 사용하는 경우, 템플릿 기반의 함수형 컴포넌트를 정의할 수 있습니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;html&quot;&gt;&lt;pre class=&quot;language-html&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;template&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;functional&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;template&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;함수형-컴포넌트-성능-비교&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%95%A8%EC%88%98%ED%98%95-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EC%84%B1%EB%8A%A5-%EB%B9%84%EA%B5%90&quot; aria-label=&quot;함수형 컴포넌트 성능 비교 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;a href=&quot;https://codesandbox.io/s/vue-stateful-vs-functional-q38om&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;함수형 컴포넌트 성능 비교&lt;/a&gt;&lt;/h3&gt;
+&lt;h2 id=&quot;keep-alive로-동적-컴포넌트-캐시하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#keep-alive%EB%A1%9C-%EB%8F%99%EC%A0%81-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EC%BA%90%EC%8B%9C%ED%95%98%EA%B8%B0&quot; aria-label=&quot;keep alive로 동적 컴포넌트 캐시하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;keep-alive로 동적 컴포넌트 캐시하기&lt;/h2&gt;
+&lt;p&gt;동적으로 컴포넌트를 렌더링하면서 상태를 캐시해야하는 경우, &lt;code class=&quot;language-text&quot;&gt;keep-alive&lt;/code&gt;를 사용해 컴포넌트 상태를 캐시 할 수 있습니다. 컴포넌트는 destory 되지 않기 때문에 destroy lifecycle이 호출되지 않습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;2.1.0+&lt;/code&gt; 이후로 &lt;code class=&quot;language-text&quot;&gt;include&lt;/code&gt;와 &lt;code class=&quot;language-text&quot;&gt;exclude&lt;/code&gt;로 조건부 캐시가 가능합니다.&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;2.2.0+&lt;/code&gt; 이후로 컴포넌트가 활성화 또는 비활성화 되는 경우 &lt;code class=&quot;language-text&quot;&gt;activated&lt;/code&gt; 와 &lt;code class=&quot;language-text&quot;&gt;deactivated&lt;/code&gt; lifecycle이 호출됩니다.&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;2.5.0+&lt;/code&gt; 이후로 &lt;code class=&quot;language-text&quot;&gt;max&lt;/code&gt;를 사용해 최대 컴포넌트 캐시 개수를 지정할 수 있습니다. 최대 개수가 넘어가면 가장 최근에 사용되어 캐시된 컴포넌트부터 파괴합니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;html&quot;&gt;&lt;pre class=&quot;language-html&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;&amp;lt;!-- comma-delimited string --&gt;&lt;/span&gt;
+&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;keep-alive&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;a,b&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;component&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;:is&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;view&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;component&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;keep-alive&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;&amp;lt;!-- regex (use `v-bind`) --&gt;&lt;/span&gt;
+&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;keep-alive&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;:include&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;/a|b/&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;component&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;:is&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;view&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;component&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;keep-alive&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;&amp;lt;!-- Array (use `v-bind`) --&gt;&lt;/span&gt;
+&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;keep-alive&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;:include&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;[&lt;span class=&quot;token punctuation&quot;&gt;&apos;&lt;/span&gt;a&lt;span class=&quot;token punctuation&quot;&gt;&apos;&lt;/span&gt;, &lt;span class=&quot;token punctuation&quot;&gt;&apos;&lt;/span&gt;b&lt;span class=&quot;token punctuation&quot;&gt;&apos;&lt;/span&gt;]&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;component&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;:is&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;view&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;component&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;keep-alive&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;is와-keep-alive를-이용한-동적-컴포넌트-사용하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#is%EC%99%80-keep-alive%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EB%8F%99%EC%A0%81-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0&quot; aria-label=&quot;is와 keep alive를 이용한 동적 컴포넌트 사용하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;a href=&quot;https://codesandbox.io/s/vue-template-fnh3r&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;is&lt;/code&gt;와 &lt;code class=&quot;language-text&quot;&gt;keep-alive&lt;/code&gt;를 이용한 동적 컴포넌트 사용하기&lt;/a&gt;&lt;/h3&gt;
+&lt;h2 id=&quot;v-once로-컴포넌트-컨텐츠-캐싱하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#v-once%EB%A1%9C-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EC%BB%A8%ED%85%90%EC%B8%A0-%EC%BA%90%EC%8B%B1%ED%95%98%EA%B8%B0&quot; aria-label=&quot;v once로 컴포넌트 컨텐츠 캐싱하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;v-once로 컴포넌트 컨텐츠 캐싱하기&lt;/h2&gt;
+&lt;p&gt;첫 렌더링 이후 변경되지 않는 콘텐츠를 포함하는 경우, &lt;code class=&quot;language-text&quot;&gt;v-once&lt;/code&gt;를 사용해 업데이트 성능을 향상시킬수 있습니다.&lt;strong&gt;&lt;code class=&quot;language-text&quot;&gt;v-once&lt;/code&gt;를 과도하게 사용하다보면 업데이트가 안되는 상황에서 디버깅이 어려울 수 있습니다.&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;html&quot;&gt;&lt;pre class=&quot;language-html&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;&amp;lt;!-- single element --&gt;&lt;/span&gt;
+&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;span&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;v-once&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;This will never change: {{msg}}&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;span&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;&amp;lt;!-- the element have children --&gt;&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;&amp;lt;!-- component --&gt;&lt;/span&gt;
+&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;my-component&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;v-once&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;:comment&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;msg&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;my-component&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://vuejs.org/v2/api/#v-oncehttps://vuejs.org/v2/guide/components-edge-cases.html#Cheap-Static-Components-with-v-once&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://vuejs.org/v2/api/#v-oncehttps://vuejs.org/v2/guide/components-edge-cases.html#Cheap-Static-Components-with-v-once&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;v-if와-v-show를-구분해서-사용하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#v-if%EC%99%80-v-show%EB%A5%BC-%EA%B5%AC%EB%B6%84%ED%95%B4%EC%84%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0&quot; aria-label=&quot;v if와 v show를 구분해서 사용하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;v-if와 v-show를 구분해서 사용하기&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;v-if&lt;/code&gt; 는 컴포넌트가 토글되는 상황에서 DOM이 제거되고 다시 만들어집니다. 또한 초기 렌더링에서 조건이 거짓인 경우 아무것도 하지 않습니다.&lt;code class=&quot;language-text&quot;&gt;v-show&lt;/code&gt;는 초기 조건과 관계 없이 렌더링되며, 실제로 CSS display 속성만을 변경합니다.초기 렌더링 시간이 오래 걸리더라도 지속적으로 토글되는 경우, &lt;code class=&quot;language-text&quot;&gt;v-show&lt;/code&gt;를 사용하는 것을 추천합니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;html&quot;&gt;&lt;pre class=&quot;language-html&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;// v-if
+&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;template&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;v-if&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;display&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+  &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;h1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;Welcome&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;h1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+  &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;p&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;Hi there!&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;p&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;template&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+// v-show
+&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;h1&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;v-show&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;ok&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;Hello!&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;h1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://kr.vuejs.org/v2/guide/conditional.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://kr.vuejs.org/v2/guide/conditional.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;v-for에서-key를-사용해야-하는-이유&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#v-for%EC%97%90%EC%84%9C-key%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%B4%EC%95%BC-%ED%95%98%EB%8A%94-%EC%9D%B4%EC%9C%A0&quot; aria-label=&quot;v for에서 key를 사용해야 하는 이유 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;v-for에서 key를 사용해야 하는 이유&lt;/h2&gt;
+&lt;p&gt;Vue에서 개별 DOM 노드들을 추적하고 기존 엘리먼트를 재사용, 재정렬하기 위해서 v-for의 각 항목들에 고유한 key 속성을 제공해야 합니다. key에 대한 이상적인 값은 각 항목을 식별할 수 있는 고유한 ID입니다. key는 Vue가 노드를 식별하는 일반적인 메커니즘이기 때문에 v-for와 특별히 연관되지 않는 다른 용도로도 사용됩니다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2.2.0 이상에서 v-for는 key 가 필수 입니다&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;아래 예제에서는 동일한 배열을 렌더링하면서 배열에 삭제가 일어할 때, key를 index로 사용하면 발생하는 문제를 보여줍니다.Vue는 기존 vnode와 key를 비교하여 key가 삭제된 경우, 재정렬 방법에 대해서 알 수 없기 때문에 리스트를 전부 다시 그립니다. 아래 예제에서 &lt;code class=&quot;language-text&quot;&gt;&amp;lt;transition-group&gt;&lt;/code&gt;은 해당 리스트의 삭제된 vnode를 리스트의 끝에 붙여서 삭제하는 형태로 transition을 수행합니다.&lt;/p&gt;
+&lt;h3 id=&quot;예제&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%98%88%EC%A0%9C&quot; aria-label=&quot;예제 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;a href=&quot;https://codesandbox.io/s/object-constancy-dxxze&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;예제&lt;/a&gt;&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://kr.vuejs.org/v2/guide/list.html#keyhttps://www.telerik.com/blogs/in-vue-when-do-i-actually-need-the-key-attribute-and-whyhttps://rimdev.io/the-v-for-key/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://kr.vuejs.org/v2/guide/list.html#keyhttps://www.telerik.com/blogs/in-vue-when-do-i-actually-need-the-key-attribute-and-whyhttps://rimdev.io/the-v-for-key/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;computed와-watch를-구분해서-사용하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#computed%EC%99%80-watch%EB%A5%BC-%EA%B5%AC%EB%B6%84%ED%95%B4%EC%84%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0&quot; aria-label=&quot;computed와 watch를 구분해서 사용하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;computed와 watch를 구분해서 사용하기&lt;/h2&gt;
+&lt;p&gt;프로그래밍 방식 두가지를 분류하면 &lt;code class=&quot;language-text&quot;&gt;computed&lt;/code&gt;는 선언형 방식이고, &lt;code class=&quot;language-text&quot;&gt;watch&lt;/code&gt;는 명령형 방식이라고 볼 수 있습니다. 종속된 값이 변경되는것을 예상하여 미리 계산하여 선언해놓고 사용하는 방식이 &lt;code class=&quot;language-text&quot;&gt;computed&lt;/code&gt; 이고, 특정 데이터를 감시하고 변경에 대한 반응이 (함수 호출과 같은) 필요한 경우 &lt;code class=&quot;language-text&quot;&gt;watch&lt;/code&gt;를 사용합니다.&lt;/p&gt;
+&lt;h3 id=&quot;computed가-유용한-경우&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#computed%EA%B0%80-%EC%9C%A0%EC%9A%A9%ED%95%9C-%EA%B2%BD%EC%9A%B0&quot; aria-label=&quot;computed가 유용한 경우 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;code class=&quot;language-text&quot;&gt;computed&lt;/code&gt;가 유용한 경우&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;데이터의 변화에 따라서 화면에 계산된 값을 화면에 출력해야 하는 경우&lt;/li&gt;
+&lt;li&gt;캐싱이 필요한 경우, 입력값이 같을 경우 기존 캐시된 데이터를 사용하기 때문에 computed 구현체가 호출되지 않습니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;watch를-사용해야-하는-경우&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#watch%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%B4%EC%95%BC-%ED%95%98%EB%8A%94-%EA%B2%BD%EC%9A%B0&quot; aria-label=&quot;watch를 사용해야 하는 경우 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;code class=&quot;language-text&quot;&gt;watch&lt;/code&gt;를 사용해야 하는 경우&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;단순한 계산 외에 비동기 처리 로직이 포함되는 경우&lt;/li&gt;
+&lt;li&gt;캐싱없이 매번 호출해야하는 경우&lt;/li&gt;
+&lt;li&gt;템플릿에 출력하지 않는 값의 변화를 관찰해야 할 경우&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;참고&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%B0%B8%EA%B3%A0&quot; aria-label=&quot;참고 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;참고&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://rjs5730.github.io/livedata-blog/posts/vue/vue-performance&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://rjs5730.github.io/livedata-blog/posts/vue/vue-performance&lt;/a&gt;&lt;/p&gt;</content:encoded></item></channel></rss>
