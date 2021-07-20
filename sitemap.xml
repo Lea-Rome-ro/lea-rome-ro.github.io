@@ -3,9 +3,9 @@
 <url> <loc>https://learomero.github.io/tags</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://learomero.github.io/categories</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://learomero.github.io/pages/about/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://learomero.github.io/posts/vue-performance</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://learomero.github.io/pages/myInfo/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://learomero.github.io/posts/useMemo-and-useCallback</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://learomero.github.io/posts/vue-performance</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://learomero.github.io/posts/useful-sites-for-Front-end-Developer</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://learomero.github.io/posts/ESLint-Prettier</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://learomero.github.io/tag/eslint</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
